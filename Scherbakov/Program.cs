@@ -21,15 +21,13 @@ namespace Scherbakov
         {
             public Subject[] Sort(Subject[] subjects)
             {
-                var newSubj = from i in subjects
-                                     orderby i.FormAttest, i.Title
-                                     select i;
+                var newSubj = subjects.OrderBy(f => f.FormAttest).ThenBy(t=>t.Title);
                 return newSubj.ToArray();
             }
 
             public void WriteInfile(Subject[] subjects)
             {
-                using (StreamWriter writer = new StreamWriter("..//..//result.txt",false))
+                using (StreamWriter writer = new StreamWriter("..//..//..//result.txt",false))
                 {
                     foreach (var i in subjects) 
                     {
@@ -47,9 +45,16 @@ namespace Scherbakov
             {
                 try
                 {
-                    Console.Write("введите количеств предметов:");
+                    Console.Write("Введите количеств предметов:");
                     count = Convert.ToInt32(Console.ReadLine());
-                    break;
+                    if (count > 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Количество должно быть больше нуля, попробуйте заново");
+                    }
                 }
                 catch
                 {
@@ -74,7 +79,7 @@ namespace Scherbakov
                     }
                     catch
                     {
-                        Console.WriteLine("\nСеместр длжен быть цифрой, попробуйте ещё\n");
+                        Console.WriteLine("\nСеместр должен быть цифрой, попробуйте ещё\n");
                     }
                 }
 
