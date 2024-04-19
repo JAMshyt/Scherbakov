@@ -10,6 +10,8 @@ namespace Scherbakov
     {
         static void Main(string[] args)
         {
+
+
         }
     }
 }
