@@ -21,8 +21,7 @@ namespace Scherbakov
         {
             public Subject[] Sort(Subject[] subjects)
             {
-                var newSubj = subjects.OrderBy(f => f.FormAttest).ThenBy(t=>t.Title);
-                return newSubj.ToArray();
+                return subjects.OrderBy(f => f.FormAttest).ThenBy(t => t.Title).ToArray();
             }
 
             public void WriteInfile(Subject[] subjects)
@@ -61,6 +60,7 @@ namespace Scherbakov
                     Console.WriteLine("Ошибка, только целое число, попробуйте снова");
                 }
             }
+            Console.WriteLine();
             Subject[] subjects = new Subject[count];
 
             for (int i = 0; i < count; i++)
